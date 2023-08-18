@@ -136,7 +136,8 @@ def main(device_type):
     logger.error(f"EMBEDDING_MODEL_NAME={EMBEDDING_MODEL_NAME}")
     embeddings = HuggingFaceInstructEmbeddings(
         model_name=EMBEDDING_MODEL_NAME,
-        model_kwargs={"device": device_type , "max_seq_length":1600},
+        model_kwargs={"device": device_type },
+        encode_kwargs={ "max_seq_length":1600}
     )
     # change the embedding type here if you are running into issues.
     # These are much smaller embeddings and will work for most appications
