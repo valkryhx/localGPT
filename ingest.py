@@ -8,7 +8,7 @@ from langchain.docstore.document import Document
 from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.text_splitter import Language, RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
-
+from loguru import logger
 from constants import (
     CHROMA_SETTINGS,
     DOCUMENT_MAP,
@@ -121,9 +121,11 @@ def main(device_type):
     logging.info(f"Loading documents from {SOURCE_DIRECTORY}")
     documents = load_documents(SOURCE_DIRECTORY)
     text_documents, python_documents = split_documents(documents)
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+    # chunk_size=1000, chunk_overlap=200
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=40)
+    # chunk_size=1000, chunk_overlap=200
     python_splitter = RecursiveCharacterTextSplitter.from_language(
-        language=Language.PYTHON, chunk_size=1000, chunk_overlap=200
+        language=Language.PYTHON, chunk_size=200, chunk_overlap=40
     )
     texts = text_splitter.split_documents(text_documents)
     texts.extend(python_splitter.split_documents(python_documents))
@@ -131,6 +133,7 @@ def main(device_type):
     logging.info(f"Split into {len(texts)} chunks of text")
 
     # Create embeddings
+    logger.error(f"EMBEDDING_MODEL_NAME={EMBEDDING_MODEL_NAME}")
     embeddings = HuggingFaceInstructEmbeddings(
         model_name=EMBEDDING_MODEL_NAME,
         model_kwargs={"device": device_type},
