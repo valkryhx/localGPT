@@ -228,10 +228,10 @@ def main(device_type, show_sources):
     # Interactive questions and answers
     cnt = 0
     while cnt == 0:
-        #cnt += 1
-        query = input("输入问题:\n")
+        cnt += 1
+        #query = input("输入问题:\n")
         #query = "how long is the period of united states president?"
-        #query = "SSE报销预览打印错误怎么办"
+        query = "SSE报销预览打印错误怎么办"
         if query == "exit":
             break
         # Get the answer from the chain
