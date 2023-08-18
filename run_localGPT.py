@@ -217,8 +217,11 @@ def main(device_type, show_sources):
         chain_type_kwargs={"prompt": prompt, "memory": memory},
     )
     # Interactive questions and answers
-    while True:
-        query = input("\nEnter a query: ")
+    cnt = 0
+    while cnt =0:
+        cnt += 1
+        #query = input("\nEnter a query: ")
+        query = "how long is the period of united states president?"
         if query == "exit":
             break
         # Get the answer from the chain
