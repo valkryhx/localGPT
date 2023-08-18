@@ -62,7 +62,11 @@ class ChatGLM(LLM):
         
         if stop is not None:
             response = enforce_stop_tokens(response, stop)
-        self.history = [(updated_history[-1:][0][-500:] ,updated_history[-1:][1])] if len(updated_history)!=0 else []
+        if len(updated_history[-1]) > 0 :
+            logger.error("updated_history[-1]={updated_history[-1]}")
+            self.history = [(updated_history[-1][0][-500:] ,updated_history[-1][1])] 
+        else :
+            self.history = []
         logger.error(f"only use history[-1:],history={self.history}\nlen(self.history)={len(self.history)}")
         logger.error(f"char_len_total ={sum([len(item[0])+len(item[1]) for item in self.history])}") #因为history结构为[(q,a),(q,a)...]
         for item in self.history:
