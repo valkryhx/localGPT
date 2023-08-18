@@ -9,7 +9,7 @@ from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.llms import HuggingFacePipeline, LlamaCpp
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
-
+from loguru import logger
 # from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.vectorstores import Chroma
 from transformers import (
@@ -180,7 +180,7 @@ def main(device_type, show_sources):
 
     logging.info(f"Running on: {device_type}")
     logging.info(f"Display Source Documents set to: {show_sources}")
-
+    logger.error(f"EMBEDDING_MODEL_NAME={EMBEDDING_MODEL_NAME}")
     embeddings = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, model_kwargs={"device": device_type})
 
     # uncomment the following line if you used HuggingFaceEmbeddings in the ingest.py
