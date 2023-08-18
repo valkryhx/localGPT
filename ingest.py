@@ -137,7 +137,6 @@ def main(device_type):
     embeddings = HuggingFaceInstructEmbeddings(
         model_name=EMBEDDING_MODEL_NAME,
         model_kwargs={"device": device_type },
-        encode_kwargs={ "max_seq_length":1600}
     )
     # change the embedding type here if you are running into issues.
     # These are much smaller embeddings and will work for most appications
