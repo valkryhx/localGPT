@@ -5,6 +5,7 @@ from transformers import AutoTokenizer, AutoModel
 #from modeling_chatglm import ChatGLMForConditionalGeneration
 #from tokenization_chatglm import ChatGLMTokenizer
 import torch
+from loguru import logger
 
 DEVICE = "cuda"
 DEVICE_ID = "0"
@@ -58,8 +59,8 @@ class ChatGLM(LLM):
             temperature=self.temperature,
         )
         torch_gc()
-        print("history: ", self.history)
+        logger.error(f"only use history[-2:],history={self.history}\nlen(self.history)={len(self.history)}")
         if stop is not None:
             response = enforce_stop_tokens(response, stop)
-        self.history = updated_history
+        self.history = updated_history[-2:]
         return response
