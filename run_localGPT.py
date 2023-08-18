@@ -221,7 +221,8 @@ def main(device_type, show_sources):
     while cnt == 0:
         cnt += 1
         #query = input("\nEnter a query: ")
-        query = "how long is the period of united states president?"
+        #query = "how long is the period of united states president?"
+        query = "SSE报销预览打印错误怎么办"
         if query == "exit":
             break
         # Get the answer from the chain
