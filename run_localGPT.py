@@ -215,7 +215,7 @@ def main(device_type, show_sources):
 
     prompt = PromptTemplate(input_variables=["history", "context", "question"], template=template)
     memory = ConversationBufferMemory(input_key="question", memory_key="history")
-
+    logger.error(isinstance(memory, list))
     #llm = load_model(device_type, model_id=MODEL_ID, model_basename=MODEL_BASENAME)
     llm = ChatGLM()
     qa = RetrievalQA.from_chain_type(
