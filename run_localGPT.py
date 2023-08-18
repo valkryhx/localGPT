@@ -223,7 +223,7 @@ def main(device_type, show_sources):
         chain_type="stuff",
         retriever=retriever,
         return_source_documents=True,
-        chain_type_kwargs={"prompt": prompt, "memory": memory[-2:]},
+        chain_type_kwargs={"prompt": prompt, "memory": memory[:2]},  # history能看出越新的qa排在越前
     )
     # Interactive questions and answers
     cnt = 0
