@@ -60,7 +60,7 @@ class ChatGLM(LLM):
         )
         torch_gc()
         logger.error(f"only use history[-1:],history={self.history}\nlen(self.history)={len(self.history)}")
-        logger.error(f"char_len_total ={sum[len(item) for item in self.history]}")
+        logger.error(f"char_len_total ={sum([len(item) for item in self.history])}")
         if stop is not None:
             response = enforce_stop_tokens(response, stop)
         self.history = updated_history[-1:]
