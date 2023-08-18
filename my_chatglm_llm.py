@@ -35,7 +35,7 @@ model = AutoModel.from_pretrained(
 #model = ChatGLMForConditionalGeneration.from_pretrained("THUDM/chatglm-6b", cache_dir = '/mntnlp/qian.lwq/Chatglm_t',trust_remote_code=True).half()
 
 class ChatGLM(LLM):
-    max_token: int = 4096
+    max_token: int = 8192
     temperature: float = 0.1
     top_p = 0.9
     history = []
@@ -59,8 +59,9 @@ class ChatGLM(LLM):
             temperature=self.temperature,
         )
         torch_gc()
-        logger.error(f"only use history[-2:],history={self.history}\nlen(self.history)={len(self.history)}")
+        logger.error(f"only use history[-1:],history={self.history}\nlen(self.history)={len(self.history)}")
+        logger.error(f"char_len_total ={sum[len(item) for item in self.history]}")
         if stop is not None:
             response = enforce_stop_tokens(response, stop)
-        self.history = updated_history[-2:]
+        self.history = updated_history[-1:]
         return response
