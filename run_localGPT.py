@@ -23,6 +23,7 @@ from transformers import (
 
 from constants import CHROMA_SETTINGS, EMBEDDING_MODEL_NAME, PERSIST_DIRECTORY, MODEL_ID, MODEL_BASENAME
 
+from my_chatglm_llm import ChatGLM
 
 def load_model(device_type, model_id, model_basename=None):
     """
@@ -206,8 +207,8 @@ def main(device_type, show_sources):
     prompt = PromptTemplate(input_variables=["history", "context", "question"], template=template)
     memory = ConversationBufferMemory(input_key="question", memory_key="history")
 
-    llm = load_model(device_type, model_id=MODEL_ID, model_basename=MODEL_BASENAME)
-
+    #llm = load_model(device_type, model_id=MODEL_ID, model_basename=MODEL_BASENAME)
+    llm = ChatGLM()
     qa = RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",
