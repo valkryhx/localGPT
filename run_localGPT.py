@@ -218,7 +218,7 @@ def main(device_type, show_sources):
     )
     # Interactive questions and answers
     cnt = 0
-    while cnt =0:
+    while cnt == 0:
         cnt += 1
         #query = input("\nEnter a query: ")
         query = "how long is the period of united states president?"
