@@ -64,7 +64,7 @@ class ChatGLM(LLM):
             response = enforce_stop_tokens(response, stop)
         self.history = updated_history[-1:]
         logger.error(f"only use history[-1:],history={self.history}\nlen(self.history)={len(self.history)}")
-        logger.error(f"char_len_total ={sum([len(item) for item in self.history])}")
+        logger.error(f"char_len_total ={sum([len(item[0])+len(item[1]) for item in self.history])}") #因为history结构为[(q,a),(q,a)...]
         for item in self.history:
             print(item)
         return response
