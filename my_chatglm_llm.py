@@ -53,7 +53,7 @@ class ChatGLM(LLM):
         response, updated_history = model.chat(
             tokenizer,
             prompt,
-            history=self.history[-3:],
+            history=self.history,
             max_length=self.max_token,
             temperature=self.temperature,
         )
