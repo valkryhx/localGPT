@@ -195,14 +195,23 @@ def main(device_type, show_sources):
     retriever = db.as_retriever()
     
 
-    template = """Use the following pieces of context to answer the question at the end. If you don't know the answer,\
-    just say that you don't know, don't try to make up an answer.
+    # template = """Use the following pieces of context to answer the question at the end. If you don't know the answer,\
+    # just say that you don't know, don't try to make up an answer.
+
+    # {context}
+
+    # {history}
+    # Question: {question}
+    # Helpful Answer:"""
+
+    template = """使用如下信息回答问题. 如果不知道答案,\
+    就回答不知道，不要编造答案.
 
     {context}
 
     {history}
-    Question: {question}
-    Helpful Answer:"""
+    问: {question}
+    答:"""
 
     prompt = PromptTemplate(input_variables=["history", "context", "question"], template=template)
     memory = ConversationBufferMemory(input_key="question", memory_key="history")
