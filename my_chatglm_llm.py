@@ -65,4 +65,6 @@ class ChatGLM(LLM):
         self.history = updated_history[-1:]
         logger.error(f"only use history[-1:],history={self.history}\nlen(self.history)={len(self.history)}")
         logger.error(f"char_len_total ={sum([len(item) for item in self.history])}")
+        for item in self.history:
+            print(item)
         return response
