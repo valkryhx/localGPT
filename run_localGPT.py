@@ -23,7 +23,8 @@ from transformers import (
 
 from constants import CHROMA_SETTINGS, EMBEDDING_MODEL_NAME, PERSIST_DIRECTORY, MODEL_ID, MODEL_BASENAME
 
-from my_chatglm_llm import ChatGLM
+#from my_chatglm_llm import ChatGLM   # 基座模型
+from my_chatglm_llm_from_qlora import chatGLM   # qlora微调后的模型
 
 def load_model(device_type, model_id, model_basename=None):
     """
