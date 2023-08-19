@@ -50,8 +50,8 @@ model.eval()
 
 class ChatGLM(LLM):
     max_token: int = 8192
-    temperature: float = 0.1
-    top_p = 0.9
+    temperature: float = 0.65#0.1
+    top_p = 0.95
     history = []
 
     def __init__(self):
