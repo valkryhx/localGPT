@@ -30,3 +30,4 @@ Streamlit-extras
 
 # Excel File Manipulation
 openpyxl
+loguru
