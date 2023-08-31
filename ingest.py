@@ -147,7 +147,7 @@ def main(device_type):
         embeddings,
         persist_directory=PERSIST_DIRECTORY,
         client_settings=CHROMA_SETTINGS,
-
+        collection_metadata={"hnsw:space": "cosine"},
     )
    
 
