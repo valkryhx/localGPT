@@ -38,8 +38,8 @@ DOCUMENT_MAP = {
 }
 
 # Default Instructor Model
-EMBEDDING_MODEL_NAME = "hkunlp/instructor-large" # Uses 1.5 GB of VRAM (High Accuracy with lower VRAM usage)
-
+#EMBEDDING_MODEL_NAME = "hkunlp/instructor-large" # Uses 1.5 GB of VRAM (High Accuracy with lower VRAM usage)
+EMBEDDING_MODEL_NAME = "moka-ai/m3e-base" #"hkunlp/instructor-large"  # add 20230831
 ####
 #### OTHER EMBEDDING MODEL OPTIONS
 ####
