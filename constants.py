@@ -20,7 +20,7 @@ INGEST_THREADS = os.cpu_count() or 8
 # Define the Chroma settings
 CHROMA_SETTINGS = Settings(
     chroma_db_impl="duckdb+parquet", persist_directory=PERSIST_DIRECTORY, anonymized_telemetry=False,
-    collection_metadata={"hnsw:space": "cosine"}  ## add 20230831
+    
 )
 
 # https://python.langchain.com/en/latest/_modules/langchain/document_loaders/excel.html#UnstructuredExcelLoader
