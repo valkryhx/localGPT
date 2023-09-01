@@ -8,6 +8,7 @@ sentence-transformers
 faiss-cpu
 huggingface_hub
 transformers==4.30.2
+deepspeed==0.9.5
 protobuf==3.20.0; sys_platform != 'darwin'
 protobuf==3.20.0; sys_platform == 'darwin' and platform_machine != 'arm64'
 protobuf==3.20.3; sys_platform == 'darwin' and platform_machine == 'arm64'
