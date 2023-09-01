@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 """
 根据这个问题
 
@@ -17,7 +20,7 @@ https://github.com/langchain-ai/langchain/issues/5416
 
 
 """Wrapper around ChromaDB embeddings platform."""
-from __future__ import annotations
+
 
 import logging
 import uuid
