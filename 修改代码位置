@@ -1,0 +1,4 @@
+1. constans.py 42行 替换了词向量模型为moka
+https://github.com/valkryhx/localGPT/blob/localGPT_0831_langchain_v02/constants.py#L42  
+
+2. 
