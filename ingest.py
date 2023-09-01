@@ -118,6 +118,7 @@ def split_documents(documents: list[Document]) -> tuple[list[Document], list[Doc
     help="Device to run on. (Default is cuda)",
 )
 def main(device_type):
+    logger.error("Begin to  split")
     # Load documents and split in chunks
     logging.info(f"Loading documents from {SOURCE_DIRECTORY}")
     documents = load_documents(SOURCE_DIRECTORY)
@@ -135,8 +136,8 @@ def main(device_type):
     
     texts = text_splitter.split_documents(text_documents)
     texts.extend(python_splitter.split_documents(python_documents))
-    logging.info(f"Loaded {len(documents)} documents from {SOURCE_DIRECTORY}")
-    logging.info(f"Split into {len(texts)} chunks of text")
+    logger.error(f"Loaded {len(documents)} documents from {SOURCE_DIRECTORY}")
+    logger.error(f"Split into {len(texts)} chunks of text")
 
     # Create embeddings
     logger.error(f"EMBEDDING_MODEL_NAME={EMBEDDING_MODEL_NAME}")
