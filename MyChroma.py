@@ -21,7 +21,7 @@ https://github.com/langchain-ai/langchain/issues/5416
 
 """Wrapper around ChromaDB embeddings platform."""
 
-#from __future__ import annotations
+from __future__ import annotations
 import logging
 import uuid
 from typing import (
@@ -36,7 +36,7 @@ from typing import (
     Type,
 )
 
-import chromadb
+
 import numpy as np
 
 from langchain.docstore.document import Document
