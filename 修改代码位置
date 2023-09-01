@@ -1,4 +1,9 @@
 1. constans.py 42行 替换了词向量模型为moka
 https://github.com/valkryhx/localGPT/blob/localGPT_0831_langchain_v02/constants.py#L42  
 
-2. 
+2. ingest.py 150行 增加了collection_metadata={"hnsw:space": "cosine"} 这样使用cosine distance计算相似度 越低越相似
+https://github.com/valkryhx/localGPT/blob/localGPT_0831_langchain_v02/ingest.py#L150
+
+3. 完全新增代码MyChroma.py  主要是根据langchain.vectorstores.Chroma py  修改了64行 通过dict_merged = {**d1 , **d2}的方式 将{distance:result2}这个字典合并到结果中
+   这样后面的RetrievalQA.from_chain_type可以获取
+https://github.com/valkryhx/localGPT/blob/localGPT_0831_langchain_v02/MyChroma.py#L64
