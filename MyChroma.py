@@ -36,6 +36,7 @@ from typing import (
     Type,
 )
 
+import chromadb
 import numpy as np
 
 from langchain.docstore.document import Document
