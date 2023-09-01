@@ -1,4 +1,4 @@
-from __future__ import annotations
+
 
 
 """
@@ -21,7 +21,7 @@ https://github.com/langchain-ai/langchain/issues/5416
 
 """Wrapper around ChromaDB embeddings platform."""
 
-
+from __future__ import annotations
 import logging
 import uuid
 from typing import (
