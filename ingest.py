@@ -130,7 +130,7 @@ def main(device_type):
     # )
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=40)
     python_splitter = RecursiveCharacterTextSplitter.from_language(
-        language=Language.PYTHON, chunk_size=200, chunk_overlap=40
+        language=Language.PYTHON, chunk_size=300, chunk_overlap=40
     )
     
     texts = text_splitter.split_documents(text_documents)
