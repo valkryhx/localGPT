@@ -128,7 +128,7 @@ def main(device_type):
     # python_splitter = RecursiveCharacterTextSplitter.from_language(
     #     language=Language.PYTHON, chunk_size=880, chunk_overlap=200
     # )
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=20)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=20)
     python_splitter = RecursiveCharacterTextSplitter.from_language(
         language=Language.PYTHON, chunk_size=100, chunk_overlap=20
     )
