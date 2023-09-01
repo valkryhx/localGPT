@@ -51,6 +51,7 @@ class ChatGLM(LLM):
               prompt: str,
               stop: Optional[List[str]] = None) -> str:
         #model= ChatGLMForConditionalGeneration.from_pretrained("/mntnlp/qian.lwq/Chatglm_t/models--THUDM--chatglm-6b/snapshots/chatglm",trust_remote_code=True).half().cuda()
+        logger.debug(f"prompt={prompt}")
         response, updated_history = model.chat(
             tokenizer,
             prompt,
