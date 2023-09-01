@@ -1,26 +1,22 @@
+# """
+# 根据这个问题
+
+# https://github.com/langchain-ai/langchain/issues/4710
+
+# https://github.com/langchain-ai/langchain/issues/5416
+
+# 自定义MyChroma（VectorStore）
+# 修改def _results_to_docs_and_scores方法中
+#   metadata={**result[1],**{"distances":result[2]} } or {})
+# 将 result[2]也就是相似度计算的distance获取到并合并到metadata字典 
+# 注意目前使用的默认是L2 distance 我改成了 cosine distance （越小表示相似度1-cosine_distance越高）
+
+
+# """
 
 
 
-"""
-根据这个问题
-
-https://github.com/langchain-ai/langchain/issues/4710
-
-https://github.com/langchain-ai/langchain/issues/5416
-
-自定义MyChroma（VectorStore）
-修改def _results_to_docs_and_scores方法中
-  metadata={**result[1],**{"distances":result[2]} } or {})
-将 result[2]也就是相似度计算的distance获取到并合并到metadata字典 
-注意目前使用的默认是L2 distance 我改成了 cosine distance （越小表示相似度1-cosine_distance越高）
-
-
-"""
-
-
-
-"""Wrapper around ChromaDB embeddings platform."""
-
+#"""Wrapper around ChromaDB embeddings platform."""
 from __future__ import annotations
 import logging
 import uuid
