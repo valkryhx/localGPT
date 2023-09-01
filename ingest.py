@@ -131,6 +131,7 @@ def main(device_type):
     logging.info(f"Split into {len(texts)} chunks of text")
 
     # Create embeddings
+    logger.error(f"EMBEDDING_MODEL_NAME={EMBEDDING_MODEL_NAME}")
     embeddings = HuggingFaceInstructEmbeddings(
         model_name=EMBEDDING_MODEL_NAME,
         model_kwargs={"device": device_type},
