@@ -64,7 +64,7 @@ class ChatGLM(LLM):
         if stop is not None:
             response = enforce_stop_tokens(response, stop)
         if len(updated_history[-1]) > 0 :
-            logger.error(f"updated_history[-1]={updated_history[-1]}")
+            logger.error(f"updated_history[-1]完整部分包括memory_history,context和question={updated_history[-1]}")
             # template = """现提供如下信息:
             #            history={memory_history}
             #            context={context}
@@ -74,7 +74,7 @@ class ChatGLM(LLM):
             self.history = [(updated_history[-1][0].split("请使用上述信息回答:")[-1] ,updated_history[-1][1])] #这种写法是根据template格式来切history最后的问题部分 我们试试
         else :
             self.history = []
-        logger.error(f"only use history[-1],history={self.history}\nlen(self.history)={len(self.history)}")
+        logger.error(f"history[-1]仅仅包含最后的question部分,history={self.history}\nlen(self.history)={len(self.history)}")
         logger.error(f"char_len_total ={sum([len(item[0])+len(item[1]) for item in self.history])}") #因为history结构为[(q,a),(q,a)...]
         for item in self.history:
             logger.debug(f"item in history={item}")
