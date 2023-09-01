@@ -17,7 +17,7 @@
 
 
 #"""Wrapper around ChromaDB embeddings platform."""
-from __future__ import annotations
+from __future__ import annotations  # 注意 from __future__ 这种import必须放在第一句
 import logging
 import uuid
 from typing import (
