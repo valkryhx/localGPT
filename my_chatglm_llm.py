@@ -55,7 +55,7 @@ class ChatGLM(LLM):
         response, updated_history = model.chat(
             tokenizer,
             prompt,
-            history=self.history,
+            history=[] ,   #self.history, 由于langchain的memroy已经会将human:ai格式的历史写到prompt  所以这里最好是history=[]
             max_length=self.max_token,
             temperature=self.temperature,
         )
@@ -65,7 +65,13 @@ class ChatGLM(LLM):
             response = enforce_stop_tokens(response, stop)
         if len(updated_history[-1]) > 0 :
             logger.error(f"updated_history[-1]={updated_history[-1]}")
-            self.history = [(updated_history[-1][0][-50:] ,updated_history[-1][1])] 
+            # template = """现提供如下信息:
+            #            history={memory_history}
+            #            context={context}
+            #            请使用上述信息回答:{question}"""  
+            
+            #self.history = [(updated_history[-1][0][-50:] ,updated_history[-1][1])]  # 因为history结构为[(q,a),(q,a)...] 所以这种写法是强行将history最后一个元组的最后50字作为q 不优雅 
+            self.history = [(updated_history[-1][0].split("请使用上述信息回答:")[-1] ,updated_history[-1][1])] #这种写法是根据template格式来切history最后的问题部分 我们试试
         else :
             self.history = []
         logger.error(f"only use history[-1],history={self.history}\nlen(self.history)={len(self.history)}")
