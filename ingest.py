@@ -117,6 +117,7 @@ def split_documents(documents: list[Document]) -> tuple[list[Document], list[Doc
     help="Device to run on. (Default is cuda)",
 )
 def main(device_type):
+    logger.error(f"EMBEDDING_MODEL_NAME={EMBEDDING_MODEL_NAME}")
     # Load documents and split in chunks
     logging.info(f"Loading documents from {SOURCE_DIRECTORY}")
     documents = load_documents(SOURCE_DIRECTORY)
