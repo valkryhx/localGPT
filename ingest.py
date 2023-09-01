@@ -8,6 +8,7 @@ from langchain.docstore.document import Document
 from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.text_splitter import Language, RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
+from loguru import logger
 
 from constants import (
     CHROMA_SETTINGS,
