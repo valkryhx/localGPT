@@ -39,7 +39,8 @@ DOCUMENT_MAP = {
 
 # Default Instructor Model
 #EMBEDDING_MODEL_NAME = "hkunlp/instructor-large" # Uses 1.5 GB of VRAM (High Accuracy with lower VRAM usage)
-EMBEDDING_MODEL_NAME = "moka-ai/m3e-base" #"hkunlp/instructor-large"  # add 20230831
+EMBEDDING_MODEL_NAME = "moka-ai/m3e-base" #"hkunlp/instructor-large"  # add 20230831 向量长度为512
+EMBEDDING_MODEL_NAME = "BAAI/bge-large-zh-v1.5"  # # add 20230927 目前最好的 向量长度为1024
 ####
 #### OTHER EMBEDDING MODEL OPTIONS
 ####
