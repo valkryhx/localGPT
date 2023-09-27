@@ -32,7 +32,17 @@ SHOW_SOURCES = True
 logging.info(f"Running on: {DEVICE_TYPE}")
 logging.info(f"Display Source Documents set to: {SHOW_SOURCES}")
 
-EMBEDDINGS = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, model_kwargs={"device": DEVICE_TYPE})
+#EMBEDDINGS = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, model_kwargs={"device": DEVICE_TYPE})
+from langchain.embeddings import HuggingFaceBgeEmbeddings
+model_name = EMBEDDING_MODEL_NAME
+model_kwargs={"device": DEVICE_TYPE}
+encode_kwargs = {'normalize_embeddings': True} # set True to compute cosine similarity
+EMBEDDINGS = HuggingFaceBgeEmbeddings(
+    model_name=model_name,
+    model_kwargs=model_kwargs,
+    encode_kwargs=encode_kwargs,
+    query_instruction="为这个句子生成表示以用于检索相关文章："
+)
 
 # uncomment the following line if you used HuggingFaceEmbeddings in the ingest.py
 # EMBEDDINGS = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
