@@ -141,10 +141,23 @@ def main(device_type):
 
     # Create embeddings
     logger.error(f"EMBEDDING_MODEL_NAME={EMBEDDING_MODEL_NAME}")
-    embeddings = HuggingFaceInstructEmbeddings(
-        model_name=EMBEDDING_MODEL_NAME,
-        model_kwargs={"device": device_type},
+    # embeddings = HuggingFaceInstructEmbeddings(
+    #     model_name=EMBEDDING_MODEL_NAME,
+    #     model_kwargs={"device": device_type},
+    # )
+    # 用法参考 https://huggingface.co/BAAI/bge-large-zh-v1.5#using-langchain
+    from langchain.embeddings import HuggingFaceBgeEmbeddings
+    model_name = EMBEDDING_MODEL_NAME
+    model_kwargs={"device": device_type}
+    encode_kwargs = {'normalize_embeddings': True} # set True to compute cosine similarity
+    embeddings = HuggingFaceBgeEmbeddings(
+        model_name=model_name,
+        model_kwargs=model_kwargs,
+        encode_kwargs=encode_kwargs,
+        query_instruction="为这个句子生成表示以用于检索相关文章："
     )
+
+    
     # change the embedding type here if you are running into issues.
     # These are much smaller embeddings and will work for most appications
     # If you use HuggingFaceEmbeddings, make sure to also use the same in the
